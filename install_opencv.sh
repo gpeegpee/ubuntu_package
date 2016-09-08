@@ -30,6 +30,10 @@ sudo apt-get install libclfft-dev libclblas-dev libatlas-dev
 # Documentation:
 sudo apt-get install -y doxygen
 
+# HDF5
+# Fix bug by https://github.com/opencv/opencv/issues/6016
+sudo apt-get install libhdf5-dev
+
 sudo apt-get install -y unzip wget
 wget https://github.com/opencv/opencv/archive/3.1.0.tar.gz
 tar xfz 3.1.0.tar.gz
