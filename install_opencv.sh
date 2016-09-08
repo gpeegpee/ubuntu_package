@@ -21,7 +21,11 @@ sudo apt-get install -y libtbb-dev libeigen3-dev
 sudo apt-get install -y python-dev python-tk python-numpy python3-dev python3-tk python3-numpy
 
 # Java:
-sudo apt-get install -y ant default-jdk
+#sudo apt-get install -y ant defaul-jdk
+sudo apt-get install -y ant
+
+# AMDFFT AMDBLAS
+sudo apt-get install libclfft-dev libclblas-dev
 
 # Documentation:
 sudo apt-get install -y doxygen
@@ -32,6 +36,10 @@ tar xfz 3.1.0.tar.gz
 cd opencv-3.1.0
 mkdir build
 cd build
-cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..
+#cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..
+cmake -DWITH_QT=ON -DWITH_VTK=ON -DWITH_TBB=ON \
+-DWITH_GDAL=ON -DWITH_OPENCL=ON -DWITH_OPENGL=ON -DWITH_IPP=ON -DWITH_OPENMP=ON -DBUILD_EXAMPLES=ON \
+-DBUILD_SHARED_LIBS=ON -DINSTALL_PYTHON_EXAMPLES=ON -DENABLE_FAST_MATH=ON \
+..
 make -j8
 sudo checkinstall -D make install
