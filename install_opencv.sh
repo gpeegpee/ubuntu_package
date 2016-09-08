@@ -25,7 +25,7 @@ sudo apt-get install -y python-dev python-tk python-numpy python3-dev python3-tk
 sudo apt-get install -y ant
 
 # AMDFFT AMDBLAS
-sudo apt-get install libclfft-dev libclblas-dev
+sudo apt-get install libclfft-dev libclblas-dev libatlas-dev
 
 # Documentation:
 sudo apt-get install -y doxygen
@@ -33,11 +33,13 @@ sudo apt-get install -y doxygen
 sudo apt-get install -y unzip wget
 wget https://github.com/opencv/opencv/archive/3.1.0.tar.gz
 tar xfz 3.1.0.tar.gz
+wget https://github.com/opencv/opencv_contrib/archive/3.1.0.tar.gz
+tar xfz opencv_contrib-3.1.0.tar.gz
 cd opencv-3.1.0
 mkdir build
 cd build
 #cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..
-cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local \
+cmake -DOPENCV_EXTRA_MODULES_PATH="../opencv_contrib-3.1.0/modules" -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local \
 -DWITH_TIFF=OFF -DWITH_QT=ON -DWITH_VTK=ON -DWITH_TBB=ON \
 -DWITH_GDAL=ON -DWITH_OPENCL=ON -DWITH_OPENGL=ON -DWITH_IPP=ON -DWITH_OPENMP=ON -DBUILD_EXAMPLES=ON \
 -DBUILD_SHARED_LIBS=ON -DINSTALL_PYTHON_EXAMPLES=ON -DENABLE_FAST_MATH=ON \
