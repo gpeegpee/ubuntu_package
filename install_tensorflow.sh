@@ -23,3 +23,38 @@ sudo tar zxf ~/Downloads/cudnn-7.0-linux-x64-v4.0-prod.tgz
 
 # install tensorflow python module
 sudo -H pip install https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
+
+# build android library for tensorflow
+sudo apt-get install autoconf automake libtool curl make g++ unzip
+
+git clone https://github.com/tensorflow/tensorflow.git
+cd tensorflow
+git checkout r0.10
+./tensorflow/contrib/makefile/download_dependencies.sh
+
+wget https://dl.google.com/android/repository/android-ndk-r12b-linux-x86_64.zip
+unzip android-ndk-r12b-linux-x86_64.zip
+# Add ndk path to NDK_ROOT in bashrc
+
+mkdir -p ~/graphs
+curl -o ~/graphs/inception.zip \
+ https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip \
+ && unzip ~/graphs/inception.zip -d ~/graphs/inception
+
+./tensorflow/contrib/makefile/compile_android_protobuf.sh -c
+make -f tensorflow/contrib/makefile/Makefile TARGET=ANDROID
+
+# test
+adb push ~/graphs/inception/tensorflow_inception_graph.pb /data/local/tmp/
+adb push tensorflow/contrib/makefile/gen/bin/benchmark /data/local/tmp/
+adb shell '/data/local/tmp/benchmark \
+ --graph=/data/local/tmp/classify_image_graph_def.pb \
+ --input_layer="input:0" \
+ --input_layer_shape="1,224,224,3" \
+ --input_layer_type="float" \
+ --output_layer="output:0"
+'
+
+
+
+
