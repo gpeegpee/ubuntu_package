@@ -35,6 +35,6 @@ cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local ..
 make all -j16
 make pycaffe
-sudo checkinstall # do not use sudo checkinsta -D make install because caffe do not have "make install"
+sudo checkinstall --nodoc --backup=no # do not use sudo checkinsta -D make install because caffe do not have "make install"
 
 
