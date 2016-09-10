@@ -25,3 +25,16 @@ sudo apt-get install -y python-numpy python-scipy
 sudo apt-get install -y python3-dev
 sudo apt-get install -y python3-numpy python3-scipy
 
+# opencv has been installed already
+wget https://github.com/BVLC/caffe/archive/rc3.tar.gz
+tar xfz caffe-rc3.tar.gz
+cd caffe-rc3
+mkdir build
+cd build
+#cmake -DCPU_ONLY=ON -DUSE_CUDNN=OFF ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local ..
+make all -j16
+make pycaffe
+sudo checkinstall # do not use sudo checkinsta -D make install because caffe do not have "make install"
+
+
