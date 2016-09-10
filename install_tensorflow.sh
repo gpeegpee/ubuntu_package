@@ -22,5 +22,4 @@ cd /usr/local
 sudo tar zxf ~/Downloads/cudnn-7.0-linux-x64-v4.0-prod.tgz
 
 # install tensorflow python module
-sudo pip2 install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
-
+sudo -H pip install https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
