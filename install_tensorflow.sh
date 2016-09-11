@@ -41,8 +41,11 @@ curl -o ~/graphs/inception.zip \
  https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip \
  && unzip ~/graphs/inception.zip -d ~/graphs/inception
 
+cd tensorflow/contrib/makefile/downloads/protobuf/
+git checkout 3.0.0-beta-4
+cd ../../../../../
 ./tensorflow/contrib/makefile/compile_android_protobuf.sh -c
-make -f tensorflow/contrib/makefile/Makefile TARGET=ANDROID
+make -j8 -f tensorflow/contrib/makefile/Makefile TARGET=ANDROID
 
 # test
 adb push ~/graphs/inception/tensorflow_inception_graph.pb /data/local/tmp/
