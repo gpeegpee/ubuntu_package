@@ -126,7 +126,11 @@ unzip android-studio-ide-143.3101438-linux.zip
 ## Tizen
 # rpm cpio for unpacking rpm(tizen)
 sudo apt-get install rpm cpio
+sudo apt-get install libwebkitgtk-1.0-0 expect ruby bridge-utils openvpn
+
 wget http://download.tizen.org/sdk/Installer/tizen-studio_1.0/web-ide_Tizen_Studio_1.0_ubuntu-64.bin
+chmod +x web-ide_Tizen_Studio_1.0_ubuntu-64.bin
+./web-ide_Tizen_Studio_1.0_ubuntu-64.bin
 
 # python
 sudo apt-get install python-pip
@@ -135,8 +139,8 @@ sudo apt-get install python-pip
 wget https://repo.continuum.io/archive/Anaconda2-4.1.1-Linux-x86_64.sh
 ./Anaconda2-4.1.1-Linux-x86_64.sh
 
-wget https://download.jetbrains.com/python/pycharm-community-2016.2.2.tar.gz
-tar xfz pycharm-community-2016.2.2.tar.gz
+wget https://download.jetbrains.com/python/pycharm-community-2016.2.3.tar.gz
+tar xfz pycharm-community-2016.2.3.tar.gz
 
 # sublime text 3
 sudo add-apt-repository ppa:webupd8team/sublime-text-3
